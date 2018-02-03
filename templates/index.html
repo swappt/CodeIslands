@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"></meta>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}"></link>
+
+    <title>PythonLearn - Hello!</title>
+  </head>
+  <body>
+    <div class="img">
+      <img src="{{ url_for('static', filename='assets/ui/thumbnails/map2.png') }}" class="bg">
+    </div>
+    <div class="title"> <!-- div to contain a header -->
+      <a><img src="{{ url_for('static', filename='assets/ui/arrow.png') }}" class="left"></a>Chapter 1<a><img src="{{ url_for('static', filename='assets/ui/arrow.png') }}" class="right"></a>
+    </div>
+    <form methods=['POST']> <!-- form contains post methods to access pages -->
+      <button formaction="/beginner_1.json" type="submit">Go to Beginner 1</button>
+      <button formaction="/beginner_2.json" type="submit">Go to Beginner 2</button>
+    </form>
+  </body>
+</html>

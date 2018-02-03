@@ -1,0 +1,30 @@
+{
+  "gridSize" : 8,
+  "tutorialTitle" : "Your First Turtle!",
+  "tutorialText" : "Welcome to Turtles! For your first task, lets make it simple! In the box below, you'll see a line of code. Try and modify this code to move the turtle forward by 3 tiles.",
+  "template" : "FORWARD 1",
+  "displacement" : [3,0],
+  "targets" : {"LINES" : 1, "!USE" : ["FORWARD"], "USE" : ["FOR"]},
+  "requiredAssets" : ["map2_top", "map2_bottom"],
+  "map" : [
+    [-1.3,-1.3,"map2_top",[
+      "simpleFill",
+      [3,3],
+      [0.4,0.4]
+    ]],
+    [-1.3,2.09,"map2_bottom",[
+      "simpleFill",
+      [3,3],
+      [0.4,0.4]
+    ]]
+  ],
+  "collisions" : [
+    [1,1,1,1,1],
+    [1,0,0,0,1],
+    [1,0,0,0,1],
+    [1,0,0,0,1],
+    [1,1,1,1,1]
+  ],
+  "player_origin" : [2,2],
+  "push" : [0,1]
+}

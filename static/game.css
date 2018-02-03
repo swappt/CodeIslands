@@ -1,0 +1,191 @@
+div.overlay {
+  left: 0px;
+  top: 0px;
+  margin: 0px;
+
+  position: fixed;
+
+  background-color: #fff;
+  opacity: 0.4;
+
+  width: 100vw;
+  height: 100vh;
+}
+
+div.leftpane {
+  left: 0px;
+  top: 0px;
+  margin-left: 2vw;
+  margin-top: 1vh;
+
+  width: 45.5vw;
+  height: 92vh;
+  border-radius: 0.35vw 0 0 0.35vw;
+
+  background-color: #aaa;
+}
+
+div.code {
+  border-radius: 0 0 0 0.35vw;
+
+  font-size: 16px;
+}
+
+div.instructions {
+  left: 0px;
+  top: 0px;
+
+  width: 100%;
+
+  overflow: auto;
+
+  font-family: sans-serif;
+  font-size: 18px;
+}
+
+div.win {
+  z-index: 99;
+  position: absolute;
+  width: 35vw;
+  top: 10vh;
+  left: 32.5vw;
+  border-radius: 1vw 1vw 1vw 1vw;
+  background-color: #fff;
+  visibility: hidden;
+}
+
+div.error {
+  overflow: hidden;
+  z-index: 99;
+  position: absolute;
+  width: 0;
+  height: 8vh;
+  line-height: 6vh;
+  font-size: 2.5vh;
+  top: 0;
+  right: 0;
+  margin-right: 2vw;
+  margin-top: 5vh;
+  border-radius: 0.5vw 0 0 0.5vw;
+  background-color: #ffece8;
+
+  opacity: 0;
+
+  border-width: 0.2vh;
+  border-style: solid;
+  border-color: #f00;
+
+  border-top-width: 0.6vh;
+  border-right-width: 0;
+
+  transition:         width 500ms ease, opacity 1200ms;
+  -moz-transition:    width 500ms ease, opacity 1200ms;
+  -ms-transition:     width 500ms ease, opacity 1200ms;
+  -o-transition:      width 500ms ease, opacity 1200ms;
+  -webkit-transition: width 500ms ease, opacity 1200ms;
+}
+
+button.closewin {
+  position: fixed;
+  width: 2vw;
+  height: 2vw;
+  top: 8.5vh;
+  left: 66.5vw;
+  border-radius: 1vw 1vw 1vw 1vw;
+  background-color: #fff;
+  border-style: solid;
+  border-width: 0.2vw;
+  border-color: #000;
+
+}
+
+.gutter {
+  background-color: #fff;
+}
+
+div.result {
+  position: absolute;
+
+  right: 0px;
+  top: 0px;
+  margin-right: 2vw;
+  margin-top: 1vh;
+
+  width: 50vw;
+  height: 92vh;
+  border-radius: 0 0.35vw 0.35vw 0;
+
+  background-color: #28a884;
+
+  overflow: hidden;
+
+/*
+  background: -webkit-linear-gradient(left, orange , yellow, green, cyan, blue, violet);
+  background: -o-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
+  background: -moz-linear-gradient(right, orange, yellow, green, cyan, blue, violet);
+  background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);
+*/}
+
+canvas.display {
+  position: absolute;
+
+  margin: 0;
+  padding: 0;
+}
+
+a.startbutton {
+  position: absolute;
+  width: 12vw;
+  line-height: 6vh;
+
+  bottom: 0px;
+  margin-bottom: 2vh;
+  margin-left: 25.5vw;
+
+  font-size: 4.5vh;
+  color: white;
+
+  border-radius: 0.5vw 0.5vw 0.5vw 0.5vw;
+  border-style: none;
+
+  /*outline-style: solid;
+  outline-width: 1.2vw;
+  outline-color: #28a884;*/
+
+  text-align: center;
+}
+
+a.savebutton {
+  position: absolute;
+  width: 12vw;
+  line-height: 6vh;
+
+  bottom: 0px;
+  margin-bottom: 2vh;
+  margin-left: 12vw;
+
+  font-size: 4.5vh;
+  color: white;
+
+  border-radius: 0.5vw 0.5vw 0.5vw 0.5vw;
+  border-style: none;
+
+  text-align: center;
+}
+
+a.startbutton::-moz-focus-inner {
+  border: 0;
+}
+
+.trans {
+  opacity: 0.4;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+}
